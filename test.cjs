@@ -1,5 +1,5 @@
 const fs=require('fs'),vm=require('vm'),assert=require('assert');
-const els={},storage={};const ctx={document:{querySelector(s){return els[s]??={style:{},getContext(){return new Proxy({},{get:()=>()=>{}})}}},querySelectorAll(){return[]}},localStorage:{getItem:k=>storage[k],setItem:(k,v)=>storage[k]=v},addEventListener(){},requestAnimationFrame(){},Math,console,assert};
+const els={},storage={};const ctx={document:{querySelector(s){return els[s]??={style:{},getContext(){return new Proxy({},{get:()=>()=>{}})}}},querySelectorAll(){return[]}},localStorage:{getItem:k=>storage[k],setItem:(k,v)=>storage[k]=v},addEventListener(){},requestAnimationFrame(){},Image:class {complete=false;naturalWidth=0},Math,console,assert};
 vm.createContext(ctx);vm.runInContext(fs.readFileSync('dist/index.html','utf8').match(/<script>([\s\S]*)<\/script>/)[1],ctx);
 vm.runInContext(`
 begin(false);update(.016);assert.equal(p.form,0);transform(1);assert.equal(p.form,0);

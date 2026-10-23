@@ -2,7 +2,7 @@
 A dependency-free browser Metroidvania prototype about Ren, a scrawny mangaka whose stolen magic sketchbook lets him transform into his concept heroes.
 
 ## Play
-Open `dist/index.html` in a modern browser, or serve the directory with any static web server.
+Serve `dist/` with any static web server (for example `python -m http.server 8000 --directory dist`) and open localhost:8000. Use HTTP so the sprite atlas can be read for alpha-based frame bounds.
 
 - A/D or left/right: move
 - Space: jump; jump again as Sora
@@ -21,12 +21,12 @@ Open `dist/index.html` in a modern browser, or serve the directory with any stat
 Lanterns restore health and store progress locally. Pages also autosave. New chapter starts a fresh run; Continue restores the saved checkpoint.
 
 ## Development
-All rendering and game logic currently lives in `dist/index.html`. Rooms and transformations are data-driven. Art is original stylized canvas placeholder art, not finished anime production assets. No external dependencies, telemetry, accounts, or backend.
+All rendering and game logic currently lives in `dist/index.html`. Rooms and transformations are data-driven. Art Edition 02 uses an original AI-generated anime sprite atlas with idle, run, airborne and attack poses for three heroes. Pose changes, breathing, run bobbing, facing, transformation bursts and weapon trails are implemented. These are four key poses per hero, not full multi-frame run cycles. The painted city has subtle parallax and room color grading. Enemies and the boss retain enhanced canvas art. No external dependencies, telemetry, accounts, or backend.
 
 Run `node test.cjs` for deterministic gameplay checks covering jump reachability, transformation unlocks, sealed routes, checkpoint recovery, boss victory and save/load. Browser smoke check covers launch and rendering; full human playtesting and balancing remain.
 
 ## Next milestones
-- Replace placeholder figures with animated anime sprite sheets.
+- Expand the four key poses into full run cycles, attack anticipation and recovery frames.
 - Add coyote time, jump buffering, gamepad support, audio and hit-stop.
 - Expand the city into a larger interconnected map with hidden pages.
 - Develop individual hero stories and a multi-phase Redactor fight.
